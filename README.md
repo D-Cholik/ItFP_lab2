@@ -1,13 +1,18 @@
 <p align="center"><b>МОНУ НТУУ КПІ ім. Ігоря Сікорського ФПМ СПіСКС</b></p>
-
 <p align="center">
-<b>Звіт з лабораторної роботи 2</b><br/>
-"Рекурсія"<br/>
-дисципліни "Вступ до функціонального програмування"
+<b>Звіт з лабораторної роботи 2</b>
+<p align="center">
+<br>"Рекурсія"</br>
+з дисципліни "Вступ до функціонального програмування"
 </p>
 
-<p align="right"><b>Студент(-ка)</b>: Прізвище Ім'я По-батькові група</p>
-<p align="right"><b>Рік</b>: рік</p>
+<div style="display: flex; justify-content: flex-end;">
+  <div style="border: 0px; padding: 10px;">
+    <p>Студент: Чоловенко Дмитро Володимирович</p>
+    <p>Група: КВ-13</p>
+    <p>Рік: 2024</p>
+  </div>
+</div>
 
 ## Загальне завдання  
 Реалізуйте дві рекурсивні функції, що виконують деякі дії з вхідним(и) списком(-ами), за можливості/необхідності використовуючи різні види рекурсії. Функції, які необхідно реалізувати, задаються варіантом (п. 2.1.1). Вимоги до функцій:
@@ -29,15 +34,16 @@
 <img src="variant51.png" alt="Варіант 51">
 <img src="variant52.png" alt="Варіант 52">
 </p>  
-## Лістинг функції remove-seconds
-```lisp
+
+## Лістинг функції `remove-seconds`
+``` lisp
 (defun remove-seconds (lst)
   (if (or (null lst) (null (cdr lst)))
       lst  
       (cons (car lst) (remove-seconds (cddr lst)))))
 ```
 ### Тестові набори
-```lisp
+``` lisp
 (defun test-remove-seconds ()
   (print "Test funck: remove-seconds")
   (print (list "Test list 1: (1 2 a b 3 4 d) -> " (remove-seconds '(1 2 a b 3 4 d))))
@@ -56,7 +62,7 @@
 ("Test list 4: (1) -> " (1)) 
 ("Test list 5: () -> " NIL) 
 ```
-## Лістинг функції list-set-symmetric-difference
+## Лістинг функції `list-set-symmetric-difference`
 ```lisp
 (defun list-set-symmetric-difference (set1 set2)
   (append (unique-elements set1 set2)
