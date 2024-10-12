@@ -32,7 +32,7 @@
 ## Варіант №5
 <p align="center">
 <img src="variant51.png">
-<img src="variant51.png">
+<img src="variant52.png">
 </p>
 ## Лістинг функції remove-seconds
 ```lisp
