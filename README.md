@@ -64,21 +64,21 @@
 ```
 ## Лістинг функції `list-set-symmetric-difference`
 ```lisp
-(defun list-set-symmetric-difference (set1 set2)
-  (append (unique-elements set1 set2)
-          (unique-elements set2 set1)))
+(defun list-set-symmetric-difference (lst1 lst2)
+  (append (unique-elements lst1 lst2)
+          (unique-elements lst2 lst1)))
 
-(defun unique-elements (set1 set2)
+(defun unique-elements (lst1 lst2)
   (cond
-    ((null set1) nil)
-    ((find-element (car set1) set2) (unique-elements (cdr set1) set2))
-    (t (cons (car set1) (unique-elements (cdr set1) set2)))))
+    ((null lst1) nil)
+    ((find-element (car lst1) lst2) (unique-elements (cdr lst1) lst2))
+    (t (cons (car lst1) (unique-elements (cdr lst1) lst2)))))
 
-(defun find-element (elem list)
+(defun find-element (elem lst)
   (cond
-    ((null list) nil)
-    ((eql elem (car list)) t)
-    (t (find-element elem (cdr list)))))
+    ((null lst) nil)
+    ((eql elem (car lst)) t)
+    (t (find-element elem (cdr lst)))))
 ```
 ### Тестові набори
 ```lisp
