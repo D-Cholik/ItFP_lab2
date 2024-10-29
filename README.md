@@ -44,23 +44,25 @@
 ```
 ### Тестові набори
 ``` lisp
+(defun check-result (name actual expected)
+  (format t "~:[FAILED~;passed~] ~a~%" (equal actual expected) name))
+
 (defun test-remove-seconds ()
-  (print "Test funck: remove-seconds")
-  (print (list "Test list 1: (1 2 a b 3 4 d) -> " (remove-seconds '(1 2 a b 3 4 d))))
-  (print (list "Test list 2: (1 2 a b 3 4 d 4 d f) -> " (remove-seconds '(1 2 a b 3 4 d 4 d f))))
-  (print (list "Test list 3: (1 2 a) -> " (remove-seconds '(1 2 a))))
-  (print (list "Test list 4: (1) -> " (remove-seconds '(1))))
-  (print (list "Test list 5: () -> " (remove-seconds '()))))
-(test-remove-seconds)
+  (format t "~%Running tests for remove-seconds~%")
+  (check-result "Test 1" (remove-seconds '(1 2 a b 3 4 d)) '(1 a 3 d))
+  (check-result "Test 2" (remove-seconds '(1 2 a b 3 4 d 4 d f)) '(1 a 3 d f))
+  (check-result "Test 3" (remove-seconds '(1 2 a)) '(1 a))
+  (check-result "Test 4" (remove-seconds '(1)) '(1))
+  (check-result "Test 5" (remove-seconds '()) '()))
 ```
 ### Тестування
 ```
-"Test funck: remove-seconds" 
-("Test list 1: (1 2 a b 3 4 d) -> " (1 A 3 D)) 
-("Test list 2: (1 2 a b 3 4 d 4 d f) -> " (1 A 3 D D)) 
-("Test list 3: (1 2 a) -> " (1 A)) 
-("Test list 4: (1) -> " (1)) 
-("Test list 5: () -> " NIL) 
+Running tests for remove-seconds
+passed Test 1
+FAILED Test 2
+passed Test 3
+passed Test 4
+passed Test 5
 ```
 ## Лістинг функції `list-set-symmetric-difference`
 ```lisp
@@ -82,21 +84,23 @@
 ```
 ### Тестові набори
 ```lisp
+(defun check-result (name actual expected)
+  (format t "~:[FAILED~;passed~] ~a~%" (equal actual expected) name))
+
 (defun test-list-set-symmetric-difference ()
-  (print "Test funck: list-set-symmetric-difference")
-  (print (list "Test list 1: (1 2 3 4) and (3 4 5 6) -> "  (list-set-symmetric-difference '(1 2 3 4) '(3 4 5 6)))) 
-  (print (list "Test list 2: (1 1 2 2) and (2 3 4) -> " (list-set-symmetric-difference '(1 1 2 2) '(2 3 4)))) 
-  (print (list "Test list 3: (a b c) and (b c d e) -> " (list-set-symmetric-difference '(a b c) '(b c d e)))) 
-  (print (list "Test list 4: (1 2 3) and () -> " (list-set-symmetric-difference '(1 2 3) '()))) 
-  (print (list "Test list 5: () and (5 6 7) -> "  (list-set-symmetric-difference '() '(5 6 7)))))
-(test-list-set-symmetric-difference)
+  (format t "~%Running tests for list-set-symmetric-difference~%")
+  (check-result "Test 1" (list-set-symmetric-difference '(1 2 3 4) '(3 4 5 6)) '(1 2 5 6))
+  (check-result "Test 2" (list-set-symmetric-difference '(1 1 2 2) '(2 3 4)) '(1 3 4))
+  (check-result "Test 3" (list-set-symmetric-difference '(a b c) '(b c d e)) '(a d e))
+  (check-result "Test 4" (list-set-symmetric-difference '(1 2 3) '()) '(1 2 3))
+  (check-result "Test 5" (list-set-symmetric-difference '() '(5 6 7)) '(5 6 7)))
 ```
 ### Тестування
 ```
-"Test funck: list-set-symmetric-difference" 
-("Test list 1: (1 2 3 4) and (3 4 5 6) -> " (1 2 5 6)) 
-("Test list 2: (1 1 2 2) and (2 3 4) -> " (1 1 3 4)) 
-("Test list 3: (a b c) and (b c d e) -> " (A D E)) 
-("Test list 4: (1 2 3) and () -> " (1 2 3)) 
-("Test list 5: () and (5 6 7) -> " (5 6 7)) 
+Running tests for list-set-symmetric-difference
+passed Test 1
+FAILED Test 2
+passed Test 3
+passed Test 4
+passed Test 5
 ```
